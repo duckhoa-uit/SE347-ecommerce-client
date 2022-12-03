@@ -4,7 +4,7 @@ import DigitalOceanLogo from '@/assets/icons/DigitalOceanLogo'
 import FacebookLogo from '@/assets/icons/FacebookLogo'
 import TeslaLogo from '@/assets/icons/TeslaLogo'
 import React from 'react'
-import './AboutUsLogo.scss'
+import '../../styles/components/aboutus-logo.scss'
 AboutUsLogo.propTypes = {}
 
 export default function Logo() {
