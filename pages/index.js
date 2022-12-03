@@ -1,5 +1,6 @@
 import { Box, Button } from '@chakra-ui/react';
 import { TextInputField } from '@components/form-controls/text-input';
+import HeroSlider from '@components/hero-slider';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -27,28 +28,31 @@ export default function Home() {
   });
 
   return (
-    <FormProvider {...formMethods}>
-      <form onSubmit={handleLogin}>
-        <TextInputField
-          name="username"
-          label="Username"
-          disabled={isSubmitting}
-        />
-        <TextInputField
-          name="password"
-          label="Password"
-          type="password"
-          disabled={isSubmitting}
-        />
-        <Box py={2}>
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-          >
-            Sign In
-          </Button>
-        </Box>
-      </form>
-    </FormProvider>
+    // <FormProvider {...formMethods}>
+    //   <form onSubmit={handleLogin}>
+    //     <TextInputField
+    //       name="username"
+    //       label="Username"
+    //       disabled={isSubmitting}
+    //     />
+    //     <TextInputField
+    //       name="password"
+    //       label="Password"
+    //       type="password"
+    //       disabled={isSubmitting}
+    //     />
+    //     <Box py={2}>
+    //       <Button
+    //         type="submit"
+    //         disabled={isSubmitting}
+    //       >
+    //         Sign In
+    //       </Button>
+    //     </Box>
+    //   </form>
+    // </FormProvider>
+    <>
+      <HeroSlider />
+    </>
   );
 }

@@ -4,6 +4,7 @@
     "paths": {
       "@layouts/*": ["components/layouts/*"],
       "@icons": ["components/icons/index"],
+      "@hooks": ["components/hooks/index"],
       "@components": ["components/index"],
       "@components/*": ["components/*"],
       "@assets/*": ["assets/*"]

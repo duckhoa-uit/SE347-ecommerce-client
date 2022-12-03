@@ -1,20 +1,30 @@
 @font-face {
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
+  font-display: swap;
   font-style: normal;
-  src: local("DM Sans"), url('../../assets/fonts/DMSans/DMSans-Bold.ttf') format('truetype');
+  src: local("DM Sans"), url("../../assets/fonts/DMSans/DMSans-Bold.ttf") format("truetype");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   font-style: normal;
-  src: local("DM Sans"), url('../../assets/fonts/DMSans/DMSans-Medium.ttf') format('truetype');
+  src: local("DM Sans"), url("../../assets/fonts/DMSans/DMSans-Medium.ttf") format("truetype");
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
+  font-display: swap;
   font-style: normal;
-  src: local("DM Sans"), url('../../assets/fonts/DMSans/DMSans-Regular.ttf') format('truetype');
+  src: local("DM Sans"), url("../../assets/fonts/DMSans/DMSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Sacramento";
+  font-display: swap;
+  font-style: normal;
+  src: local("Sacramento"), url("../../assets/fonts/Sacramento/Sacramento-Regular.ttf") format("truetype");
   font-weight: 400;
 }

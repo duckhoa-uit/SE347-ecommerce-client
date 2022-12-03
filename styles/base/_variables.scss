@@ -76,11 +76,7 @@ $color-white_15: color('light', '100');
 $container-full-margin: 60px;
 $container-full-margin-sm: 20px;
 
-// $color-primary: #ff8c32;
-// $color-primary--light: #ffbd62;
-// $color--error-main: #ff732d;
-// $color-sidebar: #fff;
-// $color-sidebar-hover: #eeeeee;
+$color--gray: #8b8b8b;
 $color--blue-gray: #CDDAF7;
 $color--blue-grey: #071134;
 $color--blue: #01C0FF;
@@ -98,7 +94,7 @@ $bg--linear-gradient: linear-gradient(90deg, #2854EE 0%, #00C2FF 95.58%);
 $bg--dark: #04113E;
 $bt-border: #1AACFF;
 $text: #253A81;
-$text--dark: #081135;
+$text--dark: #1d1d1d;
 $text--light: #D9D9D9;
 $text--light--80: rgba($color--white, 0.8);
 

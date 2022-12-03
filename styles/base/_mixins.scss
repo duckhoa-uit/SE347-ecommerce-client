@@ -45,6 +45,12 @@
    @include font(300);
 }
 
+@mixin flex($align-items, $justify-content) {
+   display: flex;
+   align-items: $align-items;
+   justify-content: $justify-content;
+}
+
 @mixin flex-center {
    display: flex;
    align-items: center;
