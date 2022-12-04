@@ -1,4 +1,4 @@
-import { IMAGES } from '@/assets/images';
+import { IMAGES } from 'public/images'
 import React from 'react';
 
 export default function CommentSection() {

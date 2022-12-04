@@ -1,8 +1,10 @@
-import AdobeLogo from '@/assets/icons/AdobeLogo';
-import AmazonLogo from '@/assets/icons/AmazonLogo';
-import DigitalOceanLogo from '@/assets/icons/DigitalOceanLogo';
-import FacebookLogo from '@/assets/icons/FacebookLogo';
-import TeslaLogo from '@/assets/icons/TeslaLogo';
+//TODO: xem lại cho chắc là tui move đúng folder + import đúng nha
+import AdobeLogo from 'public/icons/AdobeLogo';
+import AmazonLogo from 'public/icons/AmazonLogo';
+import DigitalOceanLogo from 'public/icons/DigitalOceanLogo';
+import FacebookLogo from 'public/icons/FacebookLogo';
+import TeslaLogo from 'public/icons/TeslaLogo';
+import '../../styles/aboutus-logo.scss';
 import React from 'react';
 
 AboutUsLogo.propTypes = {};

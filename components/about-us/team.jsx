@@ -1,7 +1,7 @@
 import React from 'react';
-import FacebookIcon from '@/assets/icons/FacebookIcon';
-import GithubIcon from '@/assets/icons/GithubIcon';
-import { IMAGES } from '@/assets/images';
+import FacebookIcon from 'public/icons/FacebookIcon';
+import GithubIcon from 'public/icons/GithubIcon';
+import { IMAGES } from 'public/images';
 
 export default function Team() {
   return (

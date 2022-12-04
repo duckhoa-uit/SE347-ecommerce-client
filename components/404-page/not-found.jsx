@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { path } from '@/constants/path'
-import PrimaryButton from '../button/Button'
+import PrimaryButton from '@components/button/Button'
 
 export default class NotFoundPage extends React.Component {
     constructor(props) {
@@ -44,6 +44,7 @@ export default class NotFoundPage extends React.Component {
                       />
                    </div>
                    <Link to={path.home}>
+                     //TODO: Edit PrimaryButton
                       <PrimaryButton> Go to Homepage </PrimaryButton>
                    </Link>
                 </div>
