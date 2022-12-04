@@ -7,6 +7,8 @@
       "@hooks": ["components/hooks/index"],
       "@components": ["components/index"],
       "@components/*": ["components/*"],
+      "@constants": ["constants/index"],
+      "@utils": ["utils/index"],
       "@assets/*": ["assets/*"]
     }
   }

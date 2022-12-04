@@ -2,6 +2,7 @@ import { Box, Button } from '@chakra-ui/react';
 import { TextInputField } from '@components/form-controls/text-input';
 import HeroSlider from '@components/hero-slider';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { MainLayout } from '@layouts/main';
 import { FormProvider, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -10,7 +11,7 @@ const schema = yup.object({
   password: yup.string().max(255).required('Password is required')
 });
 
-export default function Home() {
+const Home = () => {
   const formMethods = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -55,4 +56,7 @@ export default function Home() {
       </FormProvider>
     </>
   );
-}
+};
+
+Home.Layout = MainLayout;
+export default Home;
