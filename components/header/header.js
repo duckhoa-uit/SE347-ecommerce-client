@@ -1,8 +1,21 @@
-import { Box, Drawer, IconButton, List, ListItem, MenuItem, Tooltip } from '@chakra-ui/react';
+import {
+  Box,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerOverlay,
+  IconButton,
+  List,
+  ListItem,
+  Tooltip,
+  useDisclosure
+} from '@chakra-ui/react';
 import { BurgerIcon, CartIcon } from '@icons';
+import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 const navItems = [
   {
@@ -21,7 +34,7 @@ const navItems = [
 function Header() {
   const [headerSticky, setHeaderSticky] = useState(false);
   const [headerShrink, setHeaderShrink] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     let isMounted = true;
@@ -29,8 +42,8 @@ function Header() {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () => {
         if (isMounted) {
-          setHeaderSticky(window.pageYOffset > 0);
-          setHeaderShrink(window.pageYOffset > 400);
+          // setHeaderSticky(window.pageYOffset > 0);
+          // setHeaderShrink(window.pageYOffset > 400);
         }
       });
     }
@@ -40,20 +53,17 @@ function Header() {
   }, []);
 
   return (
-    <header
-      className={`header ${headerSticky ? 'header--sticky' : ''} ${
-        headerShrink ? 'header--shrink' : ''
-      }`}
-    >
+    <header className={`header header--sticky ${headerShrink ? 'header--shrink' : ''}`}>
       <div className="header--innner konsept-container flex justify-between items-center">
-        <div className="mr-4 lg:mr-16 h-10 md:h-14">
+        <div className="mr-4 lg:mr-16 h-10 md:h-14 relative w-[115px] sm:w-[160px]">
           <Link href="/">
-            <img
-              className="h-full"
+            <Image
+              className="h-full w-full"
               src="https://konsept.qodeinteractive.com/wp-content/uploads/2020/07/logo_mainpng.png"
               alt="logo"
               srcSet="https://konsept.qodeinteractive.com/wp-content/uploads/2020/07/logo_mainpng.png 330w, https://konsept.qodeinteractive.com/wp-content/uploads/2020/07/logo_mainpng-300x105.png 300w"
               sizes="(max-width: 330px) 100vw, 330px"
+              fill
             />
           </Link>
         </div>
@@ -101,7 +111,7 @@ function Header() {
             href="/cart"
           >
             <div className="header__widget-content">
-              <Tooltip title="Cart">
+              <Tooltip label="Cart">
                 <IconButton icon={<CartIcon />} />
               </Tooltip>
             </div>
@@ -109,7 +119,7 @@ function Header() {
 
           <div
             className="header__widget h-full block lg:hidden"
-            onClick={() => setDrawerOpen(true)}
+            onClick={onOpen}
           >
             <div className="header__widget-content">
               <span className="header__burger block lg:hidden">
@@ -121,28 +131,20 @@ function Header() {
         </div>
 
         <Drawer
-          {...{
-            anchor: 'right',
-            open: drawerOpen,
-            onClose: () => setDrawerOpen(false)
-          }}
+          isOpen={isOpen}
+          onClose={onClose}
+          placement="right"
         >
-          <Box
-            sx={{
-              width: 200,
-              pt: 10
-            }}
-          >
-            <List
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-              }}
-            >
-              {getDrawerChoices()}
-            </List>
-          </Box>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerBody>
+              <Box pt={10}>
+                <List>{getDrawerChoices()}</List>
+              </Box>
+            </DrawerBody>
+            <DrawerFooter>{/* TODO: social links */}</DrawerFooter>
+          </DrawerContent>
         </Drawer>
       </div>
     </header>
@@ -153,7 +155,6 @@ const getDrawerChoices = () => {
   return navItems.map(({ label, route }) => {
     return (
       <ListItem
-        button
         key={label}
         sx={{ display: 'flex', justifyContent: 'center' }}
       >
@@ -163,7 +164,7 @@ const getDrawerChoices = () => {
           color="inherit"
           style={{ textDecoration: 'none' }}
         >
-          <MenuItem>{label}</MenuItem>
+          {label}
         </Link>
       </ListItem>
     );

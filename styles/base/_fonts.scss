@@ -28,3 +28,10 @@
   src: local("Sacramento"), url("../../assets/fonts/Sacramento/Sacramento-Regular.ttf") format("truetype");
   font-weight: 400;
 }
+@font-face {
+  font-family: "EB Garamond";
+  font-display: swap;
+  font-style: italic;
+  src: local("EB Garamond"), url("../../assets/fonts/EBGaramond/EBGaramond-Italic.ttf") format("truetype");
+  font-weight: 400;
+}

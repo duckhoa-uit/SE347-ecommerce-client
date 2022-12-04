@@ -28,31 +28,31 @@ export default function Home() {
   });
 
   return (
-    // <FormProvider {...formMethods}>
-    //   <form onSubmit={handleLogin}>
-    //     <TextInputField
-    //       name="username"
-    //       label="Username"
-    //       disabled={isSubmitting}
-    //     />
-    //     <TextInputField
-    //       name="password"
-    //       label="Password"
-    //       type="password"
-    //       disabled={isSubmitting}
-    //     />
-    //     <Box py={2}>
-    //       <Button
-    //         type="submit"
-    //         disabled={isSubmitting}
-    //       >
-    //         Sign In
-    //       </Button>
-    //     </Box>
-    //   </form>
-    // </FormProvider>
     <>
       <HeroSlider />
+      <FormProvider {...formMethods}>
+        <form onSubmit={handleLogin}>
+          <TextInputField
+            name="username"
+            label="Username"
+            disabled={isSubmitting}
+          />
+          <TextInputField
+            name="password"
+            label="Password"
+            type="password"
+            disabled={isSubmitting}
+          />
+          <Box py={2}>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+            >
+              Sign In
+            </Button>
+          </Box>
+        </form>
+      </FormProvider>
     </>
   );
 }
