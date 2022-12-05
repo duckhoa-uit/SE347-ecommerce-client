@@ -11,6 +11,10 @@ export const checkExpiredToken = async (responseData) => {
   }
 };
 
+export const saveBearerToken = (token) => {
+  localStorage.setItem(StorageKeys.accessToken, token);
+};
+
 export const removeBearerToken = () => {
   localStorage.removeItem(StorageKeys.accessToken);
 };

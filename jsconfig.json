@@ -4,9 +4,12 @@
     "paths": {
       "@layouts/*": ["components/layouts/*"],
       "@icons": ["components/icons/index"],
-      "@hooks": ["components/hooks/index"],
+      "@hooks/*": ["hooks/*"],
+      "@api/*": ["api/*"],
+      "@reducer/*": ["app/reducers/*"],
       "@components": ["components/index"],
       "@components/*": ["components/*"],
+      "@urls/*": ["constants/urls/*"],
       "@constants": ["constants/index"],
       "@utils": ["utils/index"],
       "@assets/*": ["assets/*"]

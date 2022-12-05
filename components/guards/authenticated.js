@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useAuthenticated } from '@hooks';
+import { useRouter } from 'next/router';
 
 export function AuthenticatedGuard({ children }) {
   const authenticated = useAuthenticated();
+  const router = useRouter();
 
   if (!authenticated) {
-    return <Redirect to={`/auth/login?message_code=LOGIN_REQUIRED`} />;
+    router.push('/auth/login?message_code=LOGIN_REQUIRED');
+    return;
   }
 
   return <Fragment>{children}</Fragment>;

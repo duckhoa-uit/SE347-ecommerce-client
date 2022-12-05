@@ -1,14 +1,15 @@
 import React, { Fragment } from 'react';
-import { useAuthenticated } from '@/hooks/useAuthenticated';
-import { Redirect } from 'react-router-dom';
-import { path } from '@/constants/path';
 import PropTypes from 'prop-types';
+import { useAuthenticated } from '@hooks/use-authenticated';
+import { useRouter } from 'next/router';
 
 export function UnauthenticatedGuard({ children }) {
   const authenticated = useAuthenticated();
+  const router = useRouter();
 
   if (authenticated) {
-    return <Redirect to={path.home} />;
+    router.push('/');
+    return;
   }
 
   return <Fragment>{children}</Fragment>;

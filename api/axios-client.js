@@ -1,21 +1,24 @@
+import { checkExpiredToken, getAccessToken } from '@utils';
 import axios from 'axios';
-import queryString from 'query-string';
-import { tokenUtil } from '@/utils/token';
+import { parse, stringify } from 'query-string';
 // Set up default config for http requests here
 // Please have a look at here `https://github.com/axios/axios#request- config` for the full list of configs
 
 const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: process.env.API_URL,
   headers: {
     'Content-Type': 'application/json'
   },
-  paramsSerializer: (params) => queryString.stringify(params)
+  paramsSerializer: {
+    encode: parse,
+    serialize: stringify
+  }
 });
 
 axiosClient.interceptors.request.use(
   async (config) => {
     // add authorization
-    const token = tokenUtil.getAccessToken();
+    const token = getAccessToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -29,7 +32,7 @@ axiosClient.interceptors.request.use(
 );
 
 axiosClient.interceptors.response.use((response) => {
-  tokenUtil.checkExpiredToken(response.data);
+  checkExpiredToken(response.data);
 
   if (response && response.data.errorCode === 0) {
     return response.data;

@@ -1,5 +1,5 @@
+import authApi from '@api/auth';
 import { useState, useEffect } from 'react';
-import authApi from '@/features/Auth/authApi';
 
 export function useAuth() {
   const [hasLoggedIn, setHasLoggedIn] = useState(true);

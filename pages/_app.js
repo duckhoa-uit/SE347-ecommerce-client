@@ -1,6 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { EmptyLayout } from '@layouts/empty';
-import { store } from 'app/store';
+import { store, wrapper } from 'app/store';
 import { Provider } from 'react-redux';
 import theme from 'theme/theme';
 import '../styles/main.scss';
@@ -19,4 +19,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
