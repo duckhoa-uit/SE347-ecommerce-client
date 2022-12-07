@@ -1,10 +1,13 @@
-import { RangeSlider, Slider } from '@chakra-ui/react';
+import {
+  RangeSlider,
+  RangeSliderFilledTrack,
+  RangeSliderThumb,
+  RangeSliderTrack
+} from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ProductListUrl } from '@urls/product';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
-import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -45,7 +48,7 @@ function FilterByPrice({ filters }) {
 
   return (
     <div className="filter-by-price">
-      <h4>Price</h4>
+      <h4>Price range</h4>
       <form onSubmit={handleSubmit(handleFilterPriceClick)}>
         <Controller
           name="priceRange"
@@ -53,19 +56,24 @@ function FilterByPrice({ filters }) {
           render={({ field: { value, onChange } }) => (
             <>
               <RangeSlider
-                size="small"
                 min={0}
                 max={200}
                 step={1}
                 value={value}
                 onChange={onChange}
                 className="price__slider"
-              />
+                colorScheme="navy"
+              >
+                <RangeSliderTrack>
+                  <RangeSliderFilledTrack />
+                </RangeSliderTrack>
+                <RangeSliderThumb index={0} />
+                <RangeSliderThumb index={1} />
+              </RangeSlider>
               <div className="price__viewer">
                 <div className="price__range">
-                  Price:
-                  <span className="from"> ${value[0].toFixed(1)}</span>
-                  <span className="to"> — ${value[1].toFixed(1)}</span>
+                  <span className="from"> ${value[0].toFixed(2)}</span>
+                  <span className="to"> — ${value[1].toFixed(2)}</span>
                 </div>
                 <button
                   type="submit"

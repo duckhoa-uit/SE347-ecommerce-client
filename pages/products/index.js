@@ -1,7 +1,8 @@
 import productApi from '@api/product';
 import { Box, Button, Skeleton, Stack, Text, useToast } from '@chakra-ui/react';
 import FilterPanel from '@components/filter-panel';
-import ProductList, { SkeletonProductList } from '@components/product-list';
+import ProductList from '@components/product-list';
+import { SkeletonProductList } from '@components/product-list/skeleton';
 import useQuery from '@hooks/use-query';
 import { MainLayout } from '@layouts/main';
 import { getCart } from '@reducer/cart';
@@ -58,7 +59,6 @@ function ProductListPage() {
         ...filters
       };
       const res = await productApi.getProducts(payload);
-      console.log(res);
       setProducts(res.data);
       setPagination(res.pagination);
     } catch (error) {

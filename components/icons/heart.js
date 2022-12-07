@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function HeartIcon(props) {
+export function HeartIcon(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,5 +21,3 @@ function HeartIcon(props) {
     </svg>
   );
 }
-
-export default HeartIcon;

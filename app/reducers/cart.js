@@ -22,22 +22,38 @@ const cart = createSlice({
       state.purchaseProducts = action.payload;
     }
   },
-  extraReducers: {
-    [getCart.fulfilled]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(getCart.fulfilled, (state, action) => {
       state._id = action.payload.data._id;
       state.current = action.payload.data.products;
       state.getting = false;
       resetCartInLocalStorage();
-    },
-    [getCart.pending]: (state, action) => {
+    });
+    builder.addCase(getCart.pending, (state, action) => {
       state.getting = true;
-    },
-    [logout.fulfilled]: (state) => {
+    });
+    builder.addCase(logout.fulfilled, (state) => {
       state._id = null;
       state.current = [];
       state.purchaseProducts = [];
-    }
+    });
   }
+  // {
+  //   [getCart.fulfilled]: (state, action) => {
+  //     state._id = action.payload.data._id;
+  //     state.current = action.payload.data.products;
+  //     state.getting = false;
+  //     resetCartInLocalStorage();
+  //   },
+  //   [getCart.pending]: (state, action) => {
+  //     state.getting = true;
+  //   },
+  //   [logout.fulfilled]: (state) => {
+  //     state._id = null;
+  //     state.current = [];
+  //     state.purchaseProducts = [];
+  //   }
+  // }
 });
 
 const cartReducer = cart.reducer;

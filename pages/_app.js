@@ -1,11 +1,13 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { EmptyLayout } from '@layouts/empty';
-import { store, wrapper } from 'app/store';
+import { wrapper } from 'app/store';
 import { Provider } from 'react-redux';
 import theme from 'theme/theme';
 import '../styles/main.scss';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, ...rest }) {
+  const { store, props } = wrapper.useWrappedStore(rest);
+  const { pageProps } = props;
   const Layout = Component.Layout ?? EmptyLayout;
 
   return (
@@ -19,4 +21,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default wrapper.withRedux(MyApp);
+export default MyApp;

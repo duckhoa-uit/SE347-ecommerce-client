@@ -36,23 +36,22 @@ const auth = createSlice({
   reducers: {
     unauthorize: handleUnauth
   },
-  extraReducers: {
-    // [register.fulfilled]: handleAuthFulfilled,
-    [login.fulfilled]: handleAuthFulfilled,
-    [getMe.fulfilled]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(login.fulfilled, handleAuthFulfilled);
+    builder.addCase(getMe.fulfilled, (state, action) => {
       const user = action.payload.data;
       state.profile = user;
       saveCurrentUser(JSON.stringify(user));
-    },
-    [logout.fulfilled]: handleUnauth,
-    [changePassword.fulfilled]: (state, action) => {
+    });
+    builder.addCase(logout.fulfilled, handleUnauth);
+    builder.addCase(changePassword.fulfilled, (state, action) => {
       state.profile = action.payload.data;
       localStorage.setItem(StorageKeys.user, JSON.stringify(state.profile));
-    },
-    [updateMe.fulfilled]: (state, action) => {
+    });
+    builder.addCase(updateMe.fulfilled, (state, action) => {
       state.profile = action.payload.data;
       localStorage.setItem(StorageKeys.user, JSON.stringify(state.profile));
-    }
+    });
   }
 });
 

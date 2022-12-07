@@ -1,17 +1,12 @@
+import React, { useState } from 'react';
 import { CircularProgress } from '@chakra-ui/react';
-import { HeartIcon } from '@icons';
-import { EyeOpenIcon } from '@icons';
+import { EyeOpenIcon, HeartIcon } from '@icons';
 import { ProductDetailsUrl } from '@urls/product';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import Image from 'next/image';
 
-ProductCard.propTypes = {
-  product: PropTypes.object,
-  onAddCart: PropTypes.func.isRequired
-};
-
-function ProductCard({ product, onAddCart }) {
+export const ProductCard = ({ product, onAddCart }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -24,19 +19,21 @@ function ProductCard({ product, onAddCart }) {
   const handleReadMore = () => {
     router.push(ProductDetailsUrl(product._id));
   };
+
   return (
     <div className="product">
       <div
-        className="product__thumbnail"
+        className="product__thumbnail relative"
         onClick={handleReadMore}
       >
-        <img
+        <Image
           className="product__thumbnail-image"
           src={
             product.img ||
             'https://konsept.qodeinteractive.com/wp-content/uploads/2020/04/shoplist6.jpg'
           }
           alt=""
+          fill
         />
         <div className="product__thumbnail-overlay">
           {/* TODO: no-time to develop */}
@@ -92,7 +89,7 @@ function ProductCard({ product, onAddCart }) {
                 {idx !== 0 ? ', ' : ''}
                 <a
                   onClick={() => {
-                    history.push({
+                    router.push({
                       pathname: path.products,
                       search: `?category=${cate}`
                     });
@@ -109,6 +106,9 @@ function ProductCard({ product, onAddCart }) {
       </div>
     </div>
   );
-}
+};
 
-export default ProductCard;
+ProductCard.propTypes = {
+  product: PropTypes.object,
+  onAddCart: PropTypes.func.isRequired
+};

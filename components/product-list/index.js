@@ -1,7 +1,7 @@
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem, SimpleGrid } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ProductCard from './product-card';
+import { ProductCard } from './product-card';
 
 ProductList.propTypes = {
   data: PropTypes.array.isRequired,
@@ -10,24 +10,20 @@ ProductList.propTypes = {
 
 function ProductList({ data, onAddCart }) {
   return (
-    <Grid spacing={2}>
+    <SimpleGrid
+      spacing={2}
+      columns={{ base: 1, md: 2, md: 3 }}
+    >
       {data.map((product) => (
-        <GridItem
-          key={product._id}
-          xs={12}
-          sm={6}
-          md={4}
-          lg={4}
-        >
+        <GridItem key={product._id}>
           <ProductCard
             product={product}
             onAddCart={onAddCart}
           />
         </GridItem>
       ))}
-    </Grid>
+    </SimpleGrid>
   );
 }
 
 export default ProductList;
-export * from './skeleton';
