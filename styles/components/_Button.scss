@@ -1,7 +1,5 @@
 //TODO: lack of varibles for Button.scss
 
-@use '../../scss/variables' as *;
-
 button {
    cursor: pointer;
    border-radius: 0;
@@ -23,7 +21,7 @@ button {
 
       &:before {
          z-index: -1;
-         content: '';
+         content: "";
          position: absolute;
          top: 0;
          right: 0;

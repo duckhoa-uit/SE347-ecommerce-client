@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import Link from 'next/link';
 import { Skeleton } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 FilterByCategory.propTypes = {
   categories: PropTypes.array.isRequired,
@@ -10,6 +11,8 @@ FilterByCategory.propTypes = {
 };
 
 function FilterByCategory({ categories, filters }) {
+  const router = useRouter();
+
   const renderCategories = () => {
     if (categories.length === 0) {
       return Array.from(new Array(10)).map((_, idx) => (
@@ -20,35 +23,32 @@ function FilterByCategory({ categories, filters }) {
         />
       ));
     }
-    return categories.map((category) => (
-      <li
-        className="category"
-        key={category.name}
-      >
-        <Link
-          style={{ fontFamily: 'Poppins', textTransform: 'capitalize' }}
-          to={(location) => {
-            let _filters;
-            const params = queryString.parse(location.search);
-            if (params.category === category.name) {
-              _filters = { ...filters };
-              delete _filters.category;
-            } else {
-              _filters = { ...filters, category: category.name };
-            }
+    return categories.map((category) => {
+      const isActive = category.name === router.query.category;
+      return (
+        <li
+          className="category"
+          key={category.name}
+        >
+          <Link
+            style={{ textTransform: 'capitalize' }}
+            className={isActive ? 'active' : ''}
+            href={(() => {
+              let _filters;
+              const params = queryString.parse(router.query);
+              if (params.category === category.name) {
+                _filters = { ...filters };
+                delete _filters.category;
+              } else {
+                _filters = { ...filters, category: category.name };
+              }
 
-            return `/products?${queryString.stringify(_filters)}`;
-          }}
-          isActive={(match, location) => {
-            if (!match) {
-              return false;
-            }
-            const query = queryString.parse(location.search);
-            return query.category === category.name;
-          }}
-        >{`${category.name} ${category.number ? `(${category.number})` : ''}`}</Link>
-      </li>
-    ));
+              return `/products?${queryString.stringify(_filters)}`;
+            })()}
+          >{`${category.name} ${category.number ? `(${category.number})` : ''}`}</Link>
+        </li>
+      );
+    });
   };
 
   return (

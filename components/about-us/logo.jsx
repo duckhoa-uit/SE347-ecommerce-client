@@ -4,7 +4,6 @@ import AmazonLogo from 'public/icons/AmazonLogo';
 import DigitalOceanLogo from 'public/icons/DigitalOceanLogo';
 import FacebookLogo from 'public/icons/FacebookLogo';
 import TeslaLogo from 'public/icons/TeslaLogo';
-import '../../styles/aboutus-logo.scss';
 import React from 'react';
 
 AboutUsLogo.propTypes = {};

@@ -1,4 +1,4 @@
-import { Slider } from '@chakra-ui/react';
+import { RangeSlider, Slider } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ProductListUrl } from '@urls/product';
 import { useRouter } from 'next/router';
@@ -52,8 +52,7 @@ function FilterByPrice({ filters }) {
           control={control}
           render={({ field: { value, onChange } }) => (
             <>
-              <Slider
-                getAriaLabel={() => 'Price range'}
+              <RangeSlider
                 size="small"
                 min={0}
                 max={200}

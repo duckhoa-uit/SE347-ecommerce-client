@@ -1,4 +1,4 @@
-import { Box, Grid, Skeleton } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Skeleton } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -12,13 +12,9 @@ SkeletonProductList.defaultProps = {
 
 export function SkeletonProductList({ length }) {
   return (
-    <Grid
-      container
-      spacing={2}
-    >
+    <Grid spacing={2}>
       {Array.from(new Array(length)).map((_, index) => (
-        <Grid
-          item
+        <GridItem
           key={index}
           xs={12}
           sm={6}
@@ -55,7 +51,7 @@ export function SkeletonProductList({ length }) {
               </Box>
             </Box>
           </Box>
-        </Grid>
+        </GridItem>
       ))}
     </Grid>
   );

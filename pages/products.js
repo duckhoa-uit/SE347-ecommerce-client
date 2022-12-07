@@ -156,7 +156,7 @@ function ProductListPage() {
         ref={productListRef}
       >
         <Box
-          pl="10px"
+          paddingLeft={10}
           mb={3}
           mt={2}
           className="text--italic color--gray"

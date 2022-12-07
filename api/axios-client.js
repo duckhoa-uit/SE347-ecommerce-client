@@ -1,11 +1,11 @@
-import { checkExpiredToken, getAccessToken } from '@utils';
+import { checkExpiredToken } from '@utils';
 import axios from 'axios';
 import { parse, stringify } from 'query-string';
 // Set up default config for http requests here
 // Please have a look at here `https://github.com/axios/axios#request- config` for the full list of configs
 
 const axiosClient = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: '/api',
   headers: {
     'Content-Type': 'application/json'
   },
@@ -18,10 +18,10 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(
   async (config) => {
     // add authorization
-    const token = getAccessToken();
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    // const token = getAccessToken();
+    // if (token) {
+    //   config.headers.Authorization = `Bearer ${token}`;
+    // }
 
     return config;
   },

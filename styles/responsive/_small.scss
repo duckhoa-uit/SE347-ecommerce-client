@@ -10,3 +10,13 @@
     }
   }
 }
+.products {
+  grid-template-columns: 1fr;
+  grid-template-areas: "filter" "products";
+  &__filters {
+    // display: none;
+  }
+
+  &__list {
+  }
+}

@@ -24,19 +24,20 @@ function FilterBySearching({ filters }) {
   };
 
   return (
-    <div className="filter-by-sorting">
+    <div className="filter-by-searching">
       {/* TODO:add search with text */}
       <FormControl
-        fullWidth
-        variant="standard"
-        sx={{ minWidth: 120, width: '100%', height: 50 }}
+        minW={120}
+        w={'full'}
+        h={50}
+        // sx={{ minWidth: 120, width: '100%', height: 50 }}
       >
         <Input
-          sx={{ width: '100%' }}
-          id="standard-basic"
-          label="Search"
-          variant="standard"
-          color="black"
+          // sx={{ width: '100%' }}
+          w={'full'}
+          // label="Search"
+          variant="flushed"
+          placeholder="Search..."
           onChange={handleChange}
         />
       </FormControl>

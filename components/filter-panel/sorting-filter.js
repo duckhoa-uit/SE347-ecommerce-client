@@ -20,27 +20,20 @@ function FilterBySorting({ filters }) {
     <div className="filter-by-sorting">
       <h4>Sorting</h4>
       <FormControl
-        fullWidth
         variant="standard"
         sx={{ minWidth: 120, height: 50 }}
       >
-        <Menu>
-          <Select
-            value={filters.orderBy ? filters.orderBy : 'updatedAt-desc'}
-            onChange={handleChange}
-            color="black"
-          >
-            <MenuList>
-              <MenuItem value="updatedAt-desc">
-                <em>Default Sorting</em>
-              </MenuItem>
+        <Select
+          value={filters.orderBy ? filters.orderBy : 'updatedAt-desc'}
+          onChange={handleChange}
+          color="black"
+        >
+          <option value="updatedAt-desc">Default Sorting</option>
 
-              <MenuItem value="createdAt-desc">Sort by latest</MenuItem>
-              <MenuItem value="price-asc">Sort by price: low to high</MenuItem>
-              <MenuItem value="price-desc">Sort by price: high to low</MenuItem>
-            </MenuList>
-          </Select>
-        </Menu>
+          <option value="createdAt-desc">Sort by latest</option>
+          <option value="price-asc">Sort by price: low to high</option>
+          <option value="price-desc">Sort by price: high to low</option>
+        </Select>
       </FormControl>
     </div>
   );

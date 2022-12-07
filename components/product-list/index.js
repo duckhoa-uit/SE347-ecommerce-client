@@ -1,4 +1,4 @@
-import { Grid } from '@chakra-ui/react';
+import { Grid, GridItem } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ProductCard from './product-card';
@@ -10,13 +10,9 @@ ProductList.propTypes = {
 
 function ProductList({ data, onAddCart }) {
   return (
-    <Grid
-      container
-      spacing={2}
-    >
+    <Grid spacing={2}>
       {data.map((product) => (
-        <Grid
-          item
+        <GridItem
           key={product._id}
           xs={12}
           sm={6}
@@ -27,7 +23,7 @@ function ProductList({ data, onAddCart }) {
             product={product}
             onAddCart={onAddCart}
           />
-        </Grid>
+        </GridItem>
       ))}
     </Grid>
   );

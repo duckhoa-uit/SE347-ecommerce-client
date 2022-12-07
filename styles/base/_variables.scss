@@ -1,29 +1,25 @@
 $_dark: (
-   '700': #f7f7f7,
-   '500': #b7b7b7,
-   '300': #e0e0e0,
-   '100': #282e3e,
-   '50': rgba(1, 1, 1, 0.05),
-   'base': #010101,
+   "700": #f7f7f7,
+   "500": #b7b7b7,
+   "300": #e0e0e0,
+   "100": #282e3e,
+   "50": rgba(1, 1, 1, 0.05),
+   "base": #010101,
 );
 
 $_light: (
-   '500': rgba(255, 255, 255, 0.5),
-   '100': rgba(255, 255, 255, 0.15),
-   'base': #ffffff,
+   "500": rgba(255, 255, 255, 0.5),
+   "100": rgba(255, 255, 255, 0.15),
+   "base": #ffffff,
 );
 
 $colors: (
-   'dark': $_dark,
-   'light': $_light,
-   ) !default;
+   "dark": $_dark,
+   "light": $_light,
+) !default;
 
 @function color($color, $key) {
-   @return var(#{--#{$color}
-   }
-
-   -#{$key}
-);
+   @return var(#{--#{$color}} -#{$key});
 }
 
 @function colorOrg($color, $key) {
@@ -34,27 +30,20 @@ $colors: (
       @return $result;
    }
 
-   @return '';
+   @return "";
 }
 
 :root {
-
-   @each $color,
-   $value in $colors {
-
-      @each $shade,
-      $value in map-get($colors, $color) {
+   @each $color, $value in $colors {
+      @each $shade, $value in map-get($colors, $color) {
          $jo: --#{$color};
          #{$jo}-#{$shade}: #{colorOrg($color, $shade)};
       }
    }
 }
 
-@each $color,
-$value in $colors {
-
-   @each $shade,
-   $value in map-get($colors, $color) {
+@each $color, $value in $colors {
+   @each $shade, $value in map-get($colors, $color) {
       .text-#{$color}-#{$shade} {
          color: #{color($color, $shade)};
       }
@@ -66,59 +55,69 @@ $value in $colors {
 }
 
 // usage
-$color-black: color('dark', 'base');
-$color-black_80: color('dark', '800');
-$color-black_05: color('dark', '50');
-$color-white: color('light', 'base');
-$color-white_50: color('light', '500');
-$color-white_15: color('light', '100');
+$color-black: color("dark", "base");
+$color-black_80: color("dark", "800");
+$color-black_05: color("dark", "50");
+$color-white: color("light", "base");
+$color-white_50: color("light", "500");
+$color-white_15: color("light", "100");
 
 $container-full-margin: 60px;
 $container-full-margin-sm: 20px;
 
 $color--gray: #8b8b8b;
-$color--blue-gray: #CDDAF7;
+$color--blue-gray: #cddaf7;
 $color--blue-grey: #071134;
-$color--blue: #01C0FF;
-$color--deep-blue: #6E90FF;
+$color--blue: #01c0ff;
+$color--deep-blue: #6e90ff;
 $color--white: #ffffff;
-$color--light--white: #CDDAF7;
-$color--light-grey: #96A9D2;
-$color--light-light-grey: #E3F0FA;
-$color--light: #F2FBFF;
-$color--red: #E81224;
-$color--green: #16C60C;
-$color--yellow: #FFF100;
-$color--blue-blur: #D0DFFF;
-$bg--linear-gradient: linear-gradient(90deg, #2854EE 0%, #00C2FF 95.58%);
-$bg--dark: #04113E;
-$bt-border: #1AACFF;
-$text: #253A81;
+$color--light--white: #cddaf7;
+$color--light-grey: #96a9d2;
+$color--light-light-grey: #e3f0fa;
+$color--light: #f2fbff;
+$color--red: #e81224;
+$color--green: #16c60c;
+$color--yellow: #fff100;
+$color--blue-blur: #d0dfff;
+$bg--linear-gradient: linear-gradient(90deg, #2854ee 0%, #00c2ff 95.58%);
+$bg--dark: #04113e;
+$bt-border: #1aacff;
+$text: #253a81;
 $text--dark: #1d1d1d;
-$text--light: #D9D9D9;
+$text--light: #d9d9d9;
 $text--light--80: rgba($color--white, 0.8);
 
-$text--linear-gradient: linear-gradient(90deg, #2854EE 43.3%, #00C2FF 67.97%);
-$text--linear: linear-gradient(90deg, #2854EE -19%, #00C2FF 66.79%);
-$text-eplore-energy-solution-linear-gradient-blue: linear-gradient(194.02deg, #4AF3F8 19.78%, #29C4F8 73.46%, rgba(9, 80, 205, 0.8) 104.97%);
-$gradient-blue: linear-gradient(90deg, #0080FF 0%, #00C2FF 50%, #23D5E0 100%);
-$radial-gradient: radial-gradient(95% 196.3% at 2.33% 86.11%, #383CA3 0%, #2892E0 100%);
+$text--linear-gradient: linear-gradient(90deg, #2854ee 43.3%, #00c2ff 67.97%);
+$text--linear: linear-gradient(90deg, #2854ee -19%, #00c2ff 66.79%);
+$text-eplore-energy-solution-linear-gradient-blue: linear-gradient(
+   194.02deg,
+   #4af3f8 19.78%,
+   #29c4f8 73.46%,
+   rgba(9, 80, 205, 0.8) 104.97%
+);
+$gradient-blue: linear-gradient(90deg, #0080ff 0%, #00c2ff 50%, #23d5e0 100%);
+$radial-gradient: radial-gradient(95% 196.3% at 2.33% 86.11%, #383ca3 0%, #2892e0 100%);
 $bg--ellipse: rgba(48, 185, 255, 0.3);
 $bg--ellipse-2: rgba(0, 169, 255, 0.7);
 $color_background: #071134;
-$bg--linear-dark: linear-gradient(360deg, #04113E 0%, #0950CD 155.68%);
+$bg--linear-dark: linear-gradient(360deg, #04113e 0%, #0950cd 155.68%);
 
 $bg--blur: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.075) 100%);
-$bg--blur-hor: linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.15) 0.01%, rgba(255, 255, 255, 0.075) 100%);
+$bg--blur-hor: linear-gradient(
+   90deg,
+   rgba(255, 255, 255, 0.15) 0%,
+   rgba(255, 255, 255, 0.15) 0.01%,
+   rgba(255, 255, 255, 0.075) 100%
+);
 $bg--blur-hor-rev: linear-gradient(270deg, rgba(255, 255, 255, 0.1) 24.3%, rgba(255, 255, 255, 0.05) 100%);
-$bg-radial: radial-gradient(50% 50% at 50% 50%, #D9D9D9 0%, rgba(38, 229, 255, 0) 86.98%);
+$bg-radial: radial-gradient(50% 50% at 50% 50%, #d9d9d9 0%, rgba(38, 229, 255, 0) 86.98%);
 
 // $color-text-primary: #06113c;
 // $color-text-secondary: #73777b; //link palette: https://colorhunt.co/palette/15133c73777bec994bf1eee9
 // $color-divider: #eaeaef;
 // variables
-$font-main: 'DM Sans';
+$font-main: "DM Sans";
 // $border-radius--common: 4px;
-// $transition--common: all 0.3s ease;
+$transition--common: all 0.3s ease;
 $box-shadow-header: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 $linear-gradient-blue-about-us: linear-gradient(180deg, rgba(8, 20, 56, 0) 0%, #071134 75%);
