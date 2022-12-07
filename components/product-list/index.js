@@ -12,7 +12,7 @@ function ProductList({ data, onAddCart }) {
   return (
     <SimpleGrid
       spacing={2}
-      columns={{ base: 1, md: 2, md: 3 }}
+      columns={{ base: 1, md: 2, lg: 3 }}
     >
       {data.map((product) => (
         <GridItem key={product._id}>
