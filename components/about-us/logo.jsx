@@ -6,7 +6,7 @@ import FacebookLogo from 'public/icons/FacebookLogo';
 import TeslaLogo from 'public/icons/TeslaLogo';
 import React from 'react';
 
-AboutUsLogo.propTypes = {};
+Logo.propTypes = {};
 
 export default function Logo() {
   return (
