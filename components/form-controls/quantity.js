@@ -1,14 +1,14 @@
 import { Button, HStack, useNumberInput } from '@chakra-ui/react';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { TextInputField } from './text-input';
 
-export const QuantityField = () => {
+export const QuantityField = forwardRef((props, ref) => {
   const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } = useNumberInput({
     step: 1,
-    defaultValue: 1.53,
+    defaultValue: 1,
     min: 0,
     max: 6,
-    precision: 2
+    precision: 0
   });
 
   const inc = getIncrementButtonProps();
@@ -17,9 +17,13 @@ export const QuantityField = () => {
 
   return (
     <HStack maxW="320px">
-      <Button {...inc}>+</Button>
-      <TextInputField {...input} />
       <Button {...dec}>-</Button>
+      <TextInputField
+        {...input}
+        {...props}
+      />
+      <Button {...inc}>+</Button>
     </HStack>
   );
-};
+});
+QuantityField.displayName = 'QuantityField';
